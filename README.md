@@ -1,4 +1,6 @@
-## Practice: Custom Colors and Sounds
+## Prompts for Exercise
+
+### Practice: Custom Colors and Sounds
 
 1. Move all common properties in your vehicles to a new **`Vehicle`** class.
 1. Create an instance of each vehicle.
