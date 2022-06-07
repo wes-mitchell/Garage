@@ -1,45 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace garysGarage
 {
     class Program
     {
-        static void Main(string[] args) 
+        static void Main (string[] args)
         {
-            Zero fxs = new Zero()
-            {
-                BatteryKWh = 2.00,
-                MainColor = "Blue",
-                MaximumOccupancy = 4
-            };
-            Tesla modelS = new Tesla()
-            {
-                BatteryKWh = 35.00,
-                MainColor = "Red",
-                MaximumOccupancy = 2
-            };
-            Cessna mx410 = new Cessna()
-            {
-                FuelCapacity = 27.22,
-                MainColor = "Green",
-                MaximumOccupancy = 5
-            };
-            Ram ramThang = new Ram()
-            {
-                FuelCapacity = 23.75,
-                MainColor = "Yellkow",
-                MaximumOccupancy = 4
+            Zero fxs = new Zero();
+            Zero fx = new Zero();
+            Tesla modelS = new Tesla();
+            fxs.CurrentChargePercentage = 81;
+            fx.CurrentChargePercentage = 95;
+            modelS.CurrentChargePercentage = 25;
+            
+            List<IElectricVehicle> electricVehicles = new List<IElectricVehicle>() {
+                fx, fxs, modelS
             };
 
-            fxs.Drive();
-            fxs.Turn("left");
-            fxs.Stop();
-            modelS.Drive();
-            modelS.Turn("right");
-            modelS.Stop();
-            mx410.Drive();
-            mx410.Turn("left");
-            mx410.Stop();
+            Console.WriteLine("Electric Vehicles");
+            foreach(IElectricVehicle ev in electricVehicles)
+            {
+                Console.WriteLine($"Vehicle's current charge percent: {ev.CurrentChargePercentage}%");
+            }
+
+            foreach(IElectricVehicle ev in electricVehicles)
+            {
+                // This should charge the vehicle to 100%
+                ev.ChargeBattery();
+            }
+
+            foreach(IElectricVehicle ev in electricVehicles)
+            {
+                Console.WriteLine($"Vehicle's current charge percent: {ev.CurrentChargePercentage}%");
+            }
+
+            // /***********************************************/
+
+            Ram ram = new Ram ();
+            Cessna cessna150 = new Cessna ();
+            ram.CurrentTankPercentage = 84;
+            cessna150.CurrentTankPercentage = 13;
+
+            List<IGasVehicle> gasVehicles = new List<IGasVehicle>() {
+                ram, cessna150
+            };
+
+            Console.WriteLine("Gas Vehicles");
+            foreach(IGasVehicle gv in gasVehicles)
+            {
+                Console.WriteLine($"Vehicle's current tank percent: {gv.CurrentTankPercentage}%");
+            }
+
+            foreach(IGasVehicle gv in gasVehicles)
+            {
+                // This should completely refuel the gas tank
+                gv.RefuelTank();
+            }
+
+            foreach(IGasVehicle gv in gasVehicles)
+            {
+                Console.WriteLine($"Vehicle's current tank percent: {gv.CurrentTankPercentage}%");
+            }
         }
     }
 }

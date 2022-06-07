@@ -2,9 +2,15 @@ using System;
 
 namespace garysGarage
 {
-    public class Ram : Vehicle // Gas powered truck
+    public class Ram : Vehicle, IGasVehicle // Gas powered truck
     {
     public double FuelCapacity { get; set; }
+    
+    public int CurrentTankPercentage  { get; set; } = 46;
+    public void RefuelTank()
+    {
+      CurrentTankPercentage = 100;
+    }
     public override void Drive()
     {
       Console.WriteLine($"The {MainColor} Ram drives past. rrrRRRumble!");

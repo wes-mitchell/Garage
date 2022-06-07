@@ -11,14 +11,14 @@ namespace garysGarage
         {
             Console.WriteLine($"The {MainColor} drives past. Vroooom!");
         }
-        public void ChargeBattery()
-        {
-        // method definition omitted
-        }
-        public void RefuelTank()
-        {
-            // method definition omitted
-        }
+        // public void ChargeBattery()
+        // {
+        // // method definition omitted
+        // }
+        // public void RefuelTank()
+        // {
+        //     // method definition omitted
+        // }
         public virtual void Turn(string direction)
         {
             Console.WriteLine($"turn {direction}.");
